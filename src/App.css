@@ -1,0 +1,98 @@
+#root {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav {
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0;
+}
+
+.barra {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1.5em;
+}
+
+.barra-resultado {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0em;
+}
+
+section {
+  padding: 0.5em;
+  margin: auto;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  width: fit-content;
+}
+
+table thead tr td {
+  font-weight: bold;
+  font-size: large;
+  padding: 0 1em;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+table tbody tr td.num {
+  background-color: #1a1a1a;
+}
+
+.celda {
+  padding: 0;
+  margin: 0;
+}
+
+.celda .codigo {
+  width: fit-content;
+  margin: auto;
+  font-size: small;
+  color: #646cff;
+}
+
+.celda .probabilidad.suma {
+  color: #ff6464;
+}
+
+.celda .probabilidad {
+  width: fit-content;
+  margin: auto;
+  font-weight: normal;
+}
+
+.palabraCodificada {
+  letter-spacing: 2px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5em;
+}
