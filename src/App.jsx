@@ -233,26 +233,37 @@ function App() {
         </div>
       </nav>
 
-      <div className="barra-resultado">
-        <div className="container">
-          Palabra codificada:{" "}
-          <p className="palabraCodificada">{palabraCodificada}</p>
-          {"="}
-          <p className="palabraCodificada">{palabraCodificada.length} bits</p>
-          {"="}
-          <p className="palabraCodificada">
-            {palabraCodificada.length / 8} bytes
-          </p>
-        </div>
+      {palabraCodificada.length !== 0 && (
+        <div className="barra-resultado">
+          <div className="container">
+            <div className="codificada">
+              <h2>Palabra codificada: </h2>
+              <p className="palabraCodificada">{palabraCodificada}</p>
+            </div>
 
-        <div className="container">
-          Compactación:
-          <p className="palabraCodificada">{compactacion} %</p>
-        </div>
-      </div>
+            <div className="bits">
+              <h2>{"="}</h2>
+              <p className="palabraCodificada">
+                {palabraCodificada.length} bits
+              </p>
+              <h2>{"="}</h2>
+              <p className="palabraCodificada">
+                {palabraCodificada.length / 8} bytes
+              </p>
+            </div>
+          </div>
 
-      <section>
-        {letrasDataTable.length !== 0 && (
+          <div className="container">
+            <div className="compactacion">
+              <h2>Compactación:</h2>
+              <p className="palabraCodificada">{compactacion} %</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {letrasDataTable.length !== 0 && (
+        <section>
           <table cellSpacing="0" cellPadding="0">
             <thead>
               <tr>
@@ -287,8 +298,8 @@ function App() {
               ))}
             </tbody>
           </table>
-        )}
-      </section>
+        </section>
+      )}
     </>
   );
 }

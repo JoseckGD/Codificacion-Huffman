@@ -21,6 +21,7 @@ nav {
   align-items: center;
   flex-direction: row;
   gap: 1.5em;
+  flex-wrap: wrap;
 }
 
 .barra-resultado {
@@ -29,7 +30,6 @@ nav {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 0em;
 }
 
 section {
@@ -37,7 +37,14 @@ section {
   margin: auto;
   border-radius: 8px;
   background-color: #1a1a1a;
-  width: fit-content;
+  width: 100%;
+  height: fit-content;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  overflow-x: scroll;
 }
 
 table thead tr td {
@@ -93,6 +100,52 @@ table tbody tr td.num {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.container .bits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
-  gap: 0.5em;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.container .codificada {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.container .compactacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+}
+
+@media (min-width: 768px) {
+  section {
+    width: fit-content;
+  }
+
+  table {
+    margin: auto;
+  }
+
+  .container .codificada {
+    flex-direction: row;
+    gap: 1em;
+    margin-right: 1em;
+  }
+  .container {
+    flex-direction: row;
+  }
 }
