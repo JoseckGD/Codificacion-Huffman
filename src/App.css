@@ -37,7 +37,7 @@ section {
   margin: auto;
   border-radius: 8px;
   background-color: #1a1a1a;
-  width: 100%;
+  width: calc(100%-1em);
   height: fit-content;
   overflow-x: auto;
 }
@@ -132,8 +132,14 @@ table tbody tr td.num {
 }
 
 @media (min-width: 768px) {
+  body {
+    margin: 0;
+    padding: 2em;
+  }
+
   section {
     width: fit-content;
+    width: calc(100%-2em);
   }
 
   table {
