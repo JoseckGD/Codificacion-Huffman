@@ -5,7 +5,7 @@ import { Celda } from "./components/Celda";
 let resultadosOrdenar = [];
 
 function App() {
-  const [palabra, setPalabra] = useState("Hola Mundo");
+  const [palabra, setPalabra] = useState("");
   const [letrasDataTable, setLetrasDataTable] = useState([]);
   const [ordenamiento, setOrdenamiento] = useState([]);
   const [palabraCodificada, setPalabraCodificada] = useState("");
@@ -14,7 +14,7 @@ function App() {
   const inputPalabra = useRef();
 
   const ObtenerCodigo = () => {
-    if (palabra.length === 0) {
+    if (palabra.length <= 2) {
       inputPalabra.current.focus();
       return;
     }
