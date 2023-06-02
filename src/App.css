@@ -104,6 +104,7 @@ table tbody tr td.num {
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .container .bits {
@@ -120,7 +121,14 @@ table tbody tr td.num {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  width: calc(100% - 1em);
+}
+
+.num_codigo {
+  margin: 0;
+  padding: 0.5em;
+  width: 100%;
+  overflow-x: scroll;
 }
 
 .container .compactacion {
@@ -138,7 +146,6 @@ table tbody tr td.num {
   }
 
   section {
-    width: fit-content;
     width: calc(100%-2em);
   }
 
@@ -153,5 +160,9 @@ table tbody tr td.num {
   }
   .container {
     flex-direction: row;
+  }
+
+  .num_codigo {
+    width: calc(100% - 18em) fit-content;
   }
 }

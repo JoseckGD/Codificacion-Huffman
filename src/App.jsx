@@ -10,8 +10,10 @@ function App() {
   const [ordenamiento, setOrdenamiento] = useState([]);
   const [palabraCodificada, setPalabraCodificada] = useState("");
   const [compactacion, setCompactacion] = useState("");
+  const [bitsFile, setBitsFile] = useState(null);
 
   const inputPalabra = useRef();
+  const inputArchivo = useRef();
 
   const ObtenerCodigo = () => {
     if (palabra.length <= 2) {
@@ -63,6 +65,8 @@ function App() {
     getCodigoLetras(objetosLetras, resultadosOrdenar[0]);
 
     setOrdenamiento(resultadosOrdenar);
+
+    console.log(resultadosOrdenar);
   };
 
   const getCodigoLetras = (letras, codigo) => {
@@ -113,8 +117,21 @@ function App() {
       // Arreglo de arriba
       for (let j = 0; j < arreglo1.length; j++) {
         //Checar si el arreglo de arriba contiene el index del arreglo de abajo
-        arreglo1[j].index.includes(arreglo2[i].index) &&
-          (arreglo2[i].codigo = arreglo1[j].codigo);
+        // arreglo1[j].index.includes(arreglo2[i].index) &&
+        //   (arreglo2[i].codigo = arreglo1[j].codigo);
+
+        // let indexSeparator = arreglo1[j].index.split(",");
+        // // console.log(indexSeparator);
+
+        // for (let k = 0; k < indexSeparator.length - 1; k++) {
+        //   if (indexSeparator[k] === arreglo2[i].index) {
+        //     arreglo2[i].codigo = arreglo1[j].codigo;
+        //   }
+        // }
+
+        if (arreglo1[j].index.includes(arreglo2[i].index)) {
+          arreglo2[i].codigo = arreglo1[j].codigo;
+        }
       }
     }
 
@@ -126,8 +143,8 @@ function App() {
       arreglo2[arreglo2.length - 1].codigo += "0";
     }
 
-    // console.log(arreglo1);
-    // console.log(arreglo2);
+    console.log(arreglo1);
+    console.log(arreglo2);
 
     if (resultadosOrdenar[indexOfArreglo2 - 1]) {
       codificar(arreglo2, resultadosOrdenar[indexOfArreglo2 - 1]);
@@ -164,7 +181,16 @@ function App() {
     }
 
     penultimoElemento.probabilidad = fraccionSuma;
+
+    // let a ="a";
+    // a.endsWith
+    // console.log(penultimoElemento.index.endsWith(","));
+
+    // if (penultimoElemento.index.endsWith(",")) {
+    // penultimoElemento.index += "," + ultimoElemento.index;
+    // } else {
     penultimoElemento.index += ultimoElemento.index;
+    // }
 
     arreglo.pop(); // Eliminar el último elemento
 
@@ -202,6 +228,25 @@ function App() {
     setOrdenamiento([]);
     setPalabraCodificada("");
     setCompactacion("");
+    setBitsFile(null);
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file && file.type.includes("text/plain")) {
+      setBitsFile(file.size);
+
+      const reader = new FileReader();
+      reader.onload = handleFileRead;
+      reader.readAsText(file);
+    }
+  };
+
+  const handleFileRead = (event) => {
+    const content = event.target.result;
+    // console.log(content);
+    setPalabra(content);
   };
 
   return (
@@ -210,6 +255,20 @@ function App() {
         <h1>Codificación Huffman</h1>
 
         <div className="barra">
+          <div className="container" style={{ gap: "1.5em" }}>
+            <input
+              style={{ width: "70%", cursor: "pointer" }}
+              type="file"
+              onChange={handleFileChange}
+              ref={inputArchivo}
+            />
+
+            <div className="compactacion">
+              <h2>{" Tamaño:"}</h2>
+              <p className="palabraCodificada">{bitsFile} bytes</p>
+            </div>
+          </div>
+
           <input
             style={{ width: "70%", cursor: "text" }}
             type="text"
@@ -238,7 +297,9 @@ function App() {
           <div className="container">
             <div className="codificada">
               <h2>Palabra codificada: </h2>
-              <p className="palabraCodificada">{palabraCodificada}</p>
+              <p className="palabraCodificada num_codigo">
+                {palabraCodificada}
+              </p>
             </div>
 
             <div className="bits">
@@ -256,7 +317,9 @@ function App() {
           <div className="container">
             <div className="compactacion">
               <h2>Compactación:</h2>
-              <p className="palabraCodificada">{compactacion} %</p>
+              <p className="palabraCodificada">
+                {compactacion.toString().substring(0, 10)} %
+              </p>
             </div>
           </div>
         </div>
